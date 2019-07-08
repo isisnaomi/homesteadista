@@ -11,7 +11,27 @@ I18n.reload!
 case Rails.env
 when "development"
   activists = []
+  category_names = [ "communityOrg",
+                 "education",
+                 "living",
+                 "wellness",
+                 "travel",
+                 "policyGov",
+                 "style",
+                 "workMoney",
+                 "environment",
+                 "safety",
+  ]
   categories = []
+  category_counter = 0
+
+  # Create 5 Categories
+  5.times do
+    categories.push Category.create!(name: category_names[category_counter],
+                          description: Faker::Lorem.paragraph(2),
+                          picture: Faker::LoremFlickr.image("50x60")
+                          )
+    category_counter = category_counter + 1
 
   # Create 10 Activists
   10.times do
@@ -24,15 +44,10 @@ when "development"
                           website: Faker::Internet.domain_name,
                           occupation: Faker::Job.title,
                           mission: Faker::Job.field,
-                          story: Faker::Lorem.paragraph(2)
+                          story: Faker::Lorem.paragraph(2),
+                          category_id: Faker::Number.between(0, 9)
                           )
   end
 
-  # Create 5 Categories
-  5.times do
-    categories.push Category.create!(name: Faker::Job.field,
-                          description: Faker::Lorem.paragraph(2),
-                          picture: Faker::LoremFlickr.image("50x60")
-                        )
   end
 end

@@ -9,6 +9,13 @@ class Api::CategoriesController < ApplicationController
     respond_with Category.find(params[:id])
   end
 
+  def activists
+    category = Category.where(name: params['category']).first
+    print params['category']
+    activists = Activist.where(category_id: category.id)
+    render json: activists
+  end
+
   def create
     respond_with :api, Category.create(event_params)
   end

@@ -2,7 +2,14 @@ class Api::ActivistsController < ApplicationController
   respond_to :json
 
   def index
-      respond_with Activist.order(created_at: :DESC)
+    activists = Activist.order(created_at: :DESC)
+    activists = activists.search_by_full_name(params[:name]) if params[:name].present?
+    render json: activists
+  end
+
+  def featured
+    activists = Activist.order(created_at: :DESC).limit(5)
+    render json: activists
   end
 
   def show
