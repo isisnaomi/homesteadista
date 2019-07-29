@@ -22,6 +22,15 @@ class Api::ActivistsController < ApplicationController
     respond_with Activist.find(params[:id])
   end
 
+  def register
+    user = Activist.where(idToken: params[:idToken]).first_or_initialize
+    user.accessToken = params[:idToken]
+    user.name = params[:name]
+    user.email = params[:email]
+    user.profile_picture = params[:profile_picture]
+    user.save
+  end
+
   def create
     respond_with :api, Activist.create(event_params)
   end
