@@ -11,7 +11,6 @@ class Api::CategoriesController < ApplicationController
 
   def activists
     category = Category.where(name: params['category']).first
-    print params['category']
     activists = Activist.where(category_id: category.id)
     render json: activists
   end

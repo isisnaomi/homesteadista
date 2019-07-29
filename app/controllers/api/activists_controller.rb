@@ -12,6 +12,12 @@ class Api::ActivistsController < ApplicationController
     render json: activists
   end
 
+  def related
+      activist = Activist.find(params[:id])
+      activists = Activist.where(category_id: activist.category_id)
+      render json: activists
+  end
+
   def show
     respond_with Activist.find(params[:id])
   end
@@ -44,7 +50,9 @@ class Api::ActivistsController < ApplicationController
       :website,
       :occupation,
       :mission,
-      :story
+      :story,
+      :idToken,
+      :accessToken
     )
   end
 end
