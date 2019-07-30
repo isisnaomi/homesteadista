@@ -29,6 +29,7 @@ class Api::ActivistsController < ApplicationController
     user.email = params[:email]
     user.profile_picture = params[:profile_picture]
     user.save
+    respond_with Activist, json: user
   end
 
   def create
