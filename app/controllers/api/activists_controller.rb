@@ -61,7 +61,8 @@ class Api::ActivistsController < ApplicationController
       :mission,
       :story,
       :idToken,
-      :accessToken
+      :accessToken,
+      :article
     )
   end
 end
