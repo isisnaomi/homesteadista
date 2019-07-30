@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_30_201939) do
+ActiveRecord::Schema.define(version: 2019_07_30_212905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,14 +28,11 @@ ActiveRecord::Schema.define(version: 2019_07_30_201939) do
     t.text "story"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category_id"
-    t.bigint "idToken_id"
-    t.bigint "accessToken_id"
-    t.bigint "article_id"
-    t.index ["accessToken_id"], name: "index_activists_on_accessToken_id"
-    t.index ["article_id"], name: "index_activists_on_article_id"
+    t.bigint "category_id"
+    t.string "idToken"
+    t.string "accessToken"
+    t.string "article"
     t.index ["category_id"], name: "index_activists_on_category_id"
-    t.index ["idToken_id"], name: "index_activists_on_idToken_id"
   end
 
   create_table "categories", force: :cascade do |t|
