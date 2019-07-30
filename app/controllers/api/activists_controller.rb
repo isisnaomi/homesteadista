@@ -49,7 +49,7 @@ class Api::ActivistsController < ApplicationController
   private
 
   def event_params
-    params.require().permit(
+    params.permit(
       :id,
       :name,
       :last_name,
