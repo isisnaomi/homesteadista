@@ -43,6 +43,7 @@ class Api::ActivistsController < ApplicationController
   def update
     activist = Activist.find(params['id'])
     activist.update(event_params)
+    print event_params
     respond_with Activist, json: activist
   end
 
