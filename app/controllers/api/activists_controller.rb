@@ -42,13 +42,7 @@ class Api::ActivistsController < ApplicationController
 
   def update
     activist = Activist.find(params['id'])
-    activist.country = params[:country]
-    activist.accessToken = params[:country]
-    activist.website = params[:website]
-    activist.occupation = params[:occupation]
-    activist.story = params[:story]
-    activist.article = params[:article]
-    activist.save
+    activist.update(event_params)
     respond_with Activist, json: activist
   end
 
