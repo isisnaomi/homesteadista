@@ -14,7 +14,7 @@ class Api::ActivistsController < ApplicationController
 
   def related
       activist = Activist.find(params[:id])
-      activists = Activist.where(category_id: activist.category_id)
+      activists = Activist.where(category_id: activist.category_id).limit(3)
       render json: activists
   end
 
